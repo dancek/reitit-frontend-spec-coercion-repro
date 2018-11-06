@@ -5,11 +5,13 @@
             [reitit.coercion.spec :as rspec]
             [spec-tools.spec :as spec]))
 
+(js/console.log `int?)
+
 (def routes
   (rf/router
     [["/" {:name ::root}]
      ["/int/:id" {:name ::int
-                  :parameters {:path {:id int?}}}]
+                  :parameters {:path {:id cljs.core/int?}}}]
      ["/spec-int/:id" {:name ::spec-int
                        :parameters {:path {:id spec/int?}}}]]
     {:data {:coercion rspec/coercion}}))
